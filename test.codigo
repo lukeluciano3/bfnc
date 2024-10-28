@@ -1,0 +1,21 @@
+let int x = 10;
+let int *y;
+const int z = 20;
+const int *w = &z;
+
+x++;
+*y = 15;
+y = &x;
+
+if (x > 5) {
+   log(x);
+} else {
+   log(0);
+}
+
+while (x < 25) {
+   x++;
+   log(x);
+}
+
+return 0;

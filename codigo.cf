@@ -1,0 +1,88 @@
+-- Comentários
+comment "#" ;
+comment "//" ;
+comment "/*" "*/" ;
+
+-- Programa principal
+Program.  Progr    ::= [Dec] [Stm] ;
+
+-- Declarações
+[].       [Dec]    ::= ;
+(:).      [Dec]    ::= Dec ";" [Dec] ;
+
+-- Lista de statements
+[].       [Stm]    ::= ;
+(:).      [Stm]    ::= Stm [Stm] ;
+
+-- Declarações de variáveis
+DeclLet.     Dec      ::= "let" Typ PointerIdent MaybeInit ;
+DeclConst.   Dec      ::= "const" Typ PointerIdent MaybeInit ;
+DeclLetPtr.  Dec      ::= "let" Typ "*" Ident MaybeInit ;
+DeclConstPtr.Dec      ::= "const" Typ "*" Ident MaybeInit ;
+
+-- Inicialização de variáveis
+JustInit.    MaybeInit ::= "=" Exp ;
+PtrInit.     MaybeInit ::= "=" "&" Ident ;
+NoInit.      MaybeInit ::= ;
+
+-- Identificadores
+(:[]).       [Ident]  ::= Ident ;
+(:).         [Ident]  ::= Ident "," [Ident] ;
+
+-- Identificadores de ponteiros
+PointerVar.  PointerIdent ::= "*" PointerIdent ;
+SimpleVar.   PointerIdent ::= Ident ;
+
+-- Statements
+SBlock.      Stm      ::= "{" [Dec] [Stm] "}" ;
+SAss.        Stm      ::= Ident "=" Exp ";" ;
+EDerefAss.   Stm      ::= "*" Ident "=" Exp ";" ;
+PtrAssign.   Stm      ::= PointerIdent "=" "&" Ident ";" ;
+SIncr.       Stm      ::= Ident "++" ";" ;
+SDecr.       Stm      ::= Ident "--" ";" ;
+SLog.        Stm      ::= "log" "(" Exp ")" ";" ;
+SIf.         Stm      ::= "if" "(" Exp ")" Stm "else" Stm ;
+SWhile.      Stm      ::= "while" "(" Exp ")" Stm ;
+SReturn.     Stm      ::= "return" Exp ";" ;
+
+-- Declaração de rótulos e comando GOTO
+LabelDecl.   Stm      ::= Ident ":" Stm ;
+GotoStm.     Stm      ::= "goto" Ident ";" ;
+
+-- Produções de expressões
+EOpA.        Exp      ::= Exp0 Op  Exp0 ;
+EOpB.        Exp0     ::= Exp1 Op0 Exp1 ;
+EOpC.        Exp1     ::= Exp1 Op1 Exp2 ;
+EOpD.        Exp2     ::= Exp2 Op2 Exp3 ;
+EOpE.        Exp      ::= Exp1 Op  Exp1 ;
+
+EVar.        Exp3     ::= Ident ;
+EInt.        Exp3     ::= Integer ;
+EString.     Exp3     ::= String ;
+EChar.       Exp3     ::= Char ;
+EDouble.     Exp3     ::= Double ;
+EAddr.       Exp3     ::= "&" Exp3 ;
+EDeref.      Exp3     ::= "*" Exp3 ;
+EPtrAdd.     Exp3     ::= PointerIdent "+" Exp3 ;
+EPtrSub.     Exp3     ::= PointerIdent "-" Exp3 ;
+
+_.           Exp      ::= Exp0 ;
+_.           Exp0     ::= Exp1 ;
+_.           Exp1     ::= Exp2 ;
+_.           Exp2     ::= Exp3 ;
+_.           Exp3     ::= "(" Exp ")" ;
+
+-- Operadores
+OPlus.       Op1      ::= "+" ;
+OTimes.      Op2      ::= "*" ;
+OMinus.      Op1      ::= "-" ;
+OLt.         Op0      ::= "<" ;
+OGt.         Op0      ::= ">" ;
+OEq.         Op0      ::= "==" ;
+OAnd.        Op       ::= "&&" ;
+OOr.         Op       ::= "||" ;
+
+-- Tipos de dados
+TInt.        Typ      ::= "int" ;
+TDouble.     Typ      ::= "double" ;
+TPointer.    Typ      ::= Typ "*" ;

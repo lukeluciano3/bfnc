@@ -1,0 +1,10 @@
+let int a = 0;
+let int b = 10;
+start:
+if (a < b) {
+    a = a + 1;
+    log(a);
+    goto start;
+} else {
+    log("Finalizado");
+}
