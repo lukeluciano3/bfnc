@@ -46,8 +46,8 @@ SWhile.      Stm      ::= "while" "(" Exp ")" Stm ;
 SReturn.     Stm      ::= "return" Exp ";" ;
 
 -- Declaração de rótulos e comando GOTO
-LabelDecl.   Stm      ::= Ident ":" Stm ;
-GotoStm.     Stm      ::= "goto" Ident ";" ;
+LabelDecl.   Stm      ::= Integer ":" Stm ;
+GotoStm.     Stm      ::= "goto" Integer ";" ;
 
 -- Produções de expressões
 EOpA.        Exp      ::= Exp0 Op  Exp0 ;
