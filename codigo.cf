@@ -15,15 +15,19 @@ Program.  Progr    ::= [Dec] [Stm] ;
 (:).      [Stm]    ::= Stm [Stm] ;
 
 -- Declarações de variáveis
-DeclLet.     Dec      ::= "let" Typ PointerIdent MaybeInit ;
-DeclConst.   Dec      ::= "const" Typ PointerIdent MaybeInit ;
-DeclLetPtr.  Dec      ::= "let" Typ "*" Ident MaybeInit ;
-DeclConstPtr.Dec      ::= "const" Typ "*" Ident MaybeInit ;
+DeclVar.     Dec      ::= "let" Typ Ident MaybeArray MaybeInit ;
+DeclConst.   Dec      ::= "const" Typ Ident MaybeArray MaybeInit ;
+DeclPtr.     Dec      ::= "let" Typ "*" Ident MaybeArray MaybeInit ;
+DeclConstPtr.Dec      ::= "const" Typ "*" Ident MaybeArray MaybeInit ;
 
 -- Inicialização de variáveis
 JustInit.    MaybeInit ::= "=" Exp ;
-PtrInit.     MaybeInit ::= "=" "&" Ident ;
 NoInit.      MaybeInit ::= ;
+
+-- Declaração de dimensões de array/matriz
+ArrayDecl.   MaybeArray ::= "[" Exp "]" ;
+MatrixDecl.  MaybeArray ::= "[" Exp "]" "[" Exp "]" ;
+NoArray.     MaybeArray ::= ;
 
 -- Identificadores
 (:[]).       [Ident]  ::= Ident ;
@@ -36,6 +40,8 @@ SimpleVar.   PointerIdent ::= Ident ;
 -- Statements
 SBlock.      Stm      ::= "{" [Dec] [Stm] "}" ;
 SAss.        Stm      ::= Ident "=" Exp ";" ;
+EArrayAss.   Stm      ::= Ident "[" Exp "]" "=" Exp ";" ;
+EMatrixAss.  Stm      ::= Ident "[" Exp "]" "[" Exp "]" "=" Exp ";" ;
 EDerefAss.   Stm      ::= "*" Ident "=" Exp ";" ;
 PtrAssign.   Stm      ::= PointerIdent "=" "&" Ident ";" ;
 SIncr.       Stm      ::= Ident "++" ";" ;
@@ -48,6 +54,14 @@ SReturn.     Stm      ::= "return" Exp ";" ;
 -- Declaração de rótulos e comando GOTO
 LabelDecl.   Stm      ::= Integer ":" Stm ;
 GotoStm.     Stm      ::= "goto" Integer ";" ;
+
+-- Uso de arrays/matrizes em expressões
+EArrayAccess.  Exp      ::= Ident "[" Exp "]" ;
+EMatrixAccess. Exp      ::= Ident "[" Exp "]" "[" Exp "]" ;
+
+-- Operações com matrizes e vetores
+EAddMatrix.    Exp      ::= Ident "[" Exp "]" "[" Exp "]" "+" Ident "[" Exp "]" "[" Exp "]" ;
+EAddVector.    Exp      ::= Ident "[" Exp "]" "+" Ident "[" Exp "]" ;
 
 -- Produções de expressões
 EOpA.        Exp      ::= Exp0 Op  Exp0 ;
@@ -85,4 +99,5 @@ OOr.         Op       ::= "||" ;
 -- Tipos de dados
 TInt.        Typ      ::= "int" ;
 TDouble.     Typ      ::= "double" ;
+TChar.       Typ      ::= "char" ;
 TPointer.    Typ      ::= Typ "*" ;
