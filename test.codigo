@@ -1,21 +1,152 @@
-let int x = 10;
-let int *y;
-const int z = 20;
-const int *w = &z;
+/*
+Função
+*/
 
-x++;
-*y = 15;
-y = &x;
+for(let i:int = 0; i < 25; i++){
+  
+  if(x !== 10) {
+     log("KAKAKAKKA") ;
+     log("KAKAKAKKA") ;
+     if(x !== 10) {
+      log("KAKAKAKKA") ;
+    } 
+  } 
+  if(x !== 10) {
+     log("KAKAKAKKA") ;
+  } 
+  if(x !== 10) {
+     log("KAKAKAKKA") ;
+  } else {
+    d=0;
+  } 
 
-if (x > 5) {
-   log(x);
-} else {
-   log(0);
 }
 
-while (x < 25) {
-   x++;
-   log(x);
+
+
+let a:int = 10;
+let b:int = 20;
+
+a++;
+log(a);
+
+const d:int = 20;
+
+function Soma( k;) {
+  let a:int = 10;
+  let b:int = 20;
+  let c:string = "aaaa";
+  let testchar:char = "a";
+  let @pt1 = 2;
+  let @pt = &b;
+
+
+  2 :
+
+  goto 11 ;
+ 
+  let d: int = 20 + a * b - c;
+
+  let arrayInt: int[] = [1, 2, 3, 4];
+  let arratString: string[] = ["hello", "world"];
+
+  let matrixA: int[][] = [[1, 2], [3, 4]];
+  let matrixB: int[][] = [[1, 2], [3, 4]];
+
+  let matrixC: int[][] = matrixA + matrixB;
+ 
+  while(x < 10) {
+     
+  }
+
+  for(let i:int = 0; i < 25; i++){
+
+  }
+
+  if(x == 10) {
+     log("KAKAKAKKA") ;
+     log("KAKAKAKKA") ;
+  } 
 }
 
-return 0;
+
+
+
+/*
+Outra Função
+*/
+
+
+
+function M (let a: int = 3 ; c;){
+  let arrayInt: int[] = [1, 2, 3, 4];
+  let arratString: string[] = ["hello", "world"];
+
+  let matrixA: int[][] = [[1, 2], [3, 4]];
+  let matrixB: int[][] = [[1, 2], [3, 4]];
+
+  let matrixC: int[][] = matrixA + matrixB;
+ 
+  while(x !== "10") {
+     
+  }
+
+  for(let i:int = 0; i < 25; i++){
+
+  }
+
+  let a:int = soma(n);
+  soma(a, v);
+}
+
+
+function String (let i: int = 0; let c: int = 0;) {
+  let text: string[] = ["exemplo texto exemplo texto exemplo"];
+  let word: string[] = ["exemplo"];
+  let temp_word: string[] = [""];
+  let j: int = 0;
+  word[j] = '\0';
+
+    while (text[i] !== '\0') {
+      if (text[i] == ' ') {
+        temp_word [j] = '\0';
+        j = 0; 
+
+        if (temp_word == word) {
+          count++ ;
+        } 
+      } else {
+        temp_word[j] = text[i];
+        j = j + 1;
+      }
+      i++;
+    }
+
+    //temp_word[j] = '\0'; 
+
+    if (temp_word == word) {
+      count++;
+    }
+
+    log(count);
+
+    interface Person {
+      name: string,
+      email: string,
+      age: int,
+    };
+
+    let person: Person = {
+      name: "John Doe",
+      email: "johndoe@gmail.com",
+      age: 22
+    };
+
+    let persons: Person[] = [
+      {name: "John Doe", email: "johndoe@gmail.com", age: 22}
+    ];
+
+  }
+  
+
+  
