@@ -1,10 +1,1 @@
-let int a = 0;
-let int b = 10;
-10:
-if (a < b) {
-    a = a + 1;
-    log(a);
-    goto 10;
-} else {
-    log("Finalizado");
-}
+
