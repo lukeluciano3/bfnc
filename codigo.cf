@@ -39,8 +39,6 @@
   EAssMatrix.         Exp ::= "let" Ident ":" Type "[][]" "=" "[" [Exp] "]" ;
   EAssMatrixOp.       Exp ::= "let" Ident ":" Type "[][]" "=" Exp ;
   EAssInterface.      Exp ::= "let" Ident ":" Type "=" "{" [Exp] "}" ;
-  EAssArayInterface.  Exp ::= "let" Ident ":" Type "[]" "=" "[" [Exp] "]" ;
-  EArrayInterface.    Exp ::= "{" [Exp] "}";
   EkeyDecl.           Exp ::= Ident ":" Type ;
   EkeyDeclObj.        Exp ::= Ident ":" Exp4 ;
   ELt.                Exp1 ::= Exp2 "<" Exp2 ;
